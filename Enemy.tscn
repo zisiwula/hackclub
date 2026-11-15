@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cu6j2114vq7w8"]
+
+[ext_resource type="Script" uid="uid://bc1d6naf48sgk" path="res://enemy.gd" id="1_s7bn3"]
+[ext_resource type="Texture2D" uid="uid://cmd58anscj1wx" path="res://spritesheet BallEnemy.png" id="2_2hac7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xo8l"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(46, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfyss"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(0, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ngjr"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(23, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qilgh"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(0, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qosj"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(23, 46, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjlbh"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(23, 23, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfelt"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(0, 46, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytlpd"]
+atlas = ExtResource("2_2hac7")
+region = Rect2(46, 23, 23, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6d4v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xo8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfyss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ngjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qilgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qosj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjlbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfelt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytlpd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp131"]
+size = Vector2(136, 143)
+
+[node name="Node2D" type="Node2D" unique_id=605849652]
+
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=781618973]
+position = Vector2(0, 4)
+script = ExtResource("1_s7bn3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy" unique_id=178931949]
+z_index = 10
+texture_filter = 1
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_e6d4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=560759416]
+z_index = 200
+position = Vector2(-1, -4.5)
+shape = SubResource("RectangleShape2D_qp131")
+
+[node name="DetectorSuelo" type="RayCast2D" parent="Enemy" unique_id=2010408749]
+position = Vector2(0, 54)
+
+[node name="DetectorJugador" type="Area2D" parent="Enemy" unique_id=1308466177]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/DetectorJugador" unique_id=7416672]
+z_index = 200
+position = Vector2(-1, -4.5)
+shape = SubResource("RectangleShape2D_qp131")
